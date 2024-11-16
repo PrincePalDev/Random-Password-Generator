@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Random Password Generate</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+  </head>
+  <body class="w-screen h-screen flex items-center justify-center">
+    <div class="flex flex-col items-center justify-center">
+      <h1 class="text-5xl font-bold mb-3">Random Password Generator</h1>
+      <p class="text-lg mb-7">
+        Create strong and secure passwords to keep your account safe online.
+      </p>
+      <div class="mb-5">
+        <input
+          id="input-box"
+          class="border-2 rounded-3xl py-2 px-20 shadow-inner text-xl mx-1 hover:shadow-lg"
+          type="text "
+        />
+        <p
+          id="indicate-btn"
+          class="bg-red-600 px-2 py-1 rounded-2xl text-white text-sm mx-2 inline text-center font-bold"
+        >
+          Weak
+        </p>
+
+        <button
+          id="copy-btn"
+          class="bg-blue-600 text-white w-20 h-12 rounded-3xl text-lg font-bold hover:bg-blue-700"
+        >
+          Copy
+        </button>
+      </div>
+
+      <div class="flex justify-center items-center mb-5">
+        <p class="mx-4 text-2xl">
+          Password length: <span id="password-length">4</span>
+        </p>
+        <input
+          id="range-btn"
+          class="text-2xl w-64"
+          type="range"
+          min="4"
+          max="50"
+          value="4"
+        />
+      </div>
+      <div class="text-center">
+        <p class="text-xl mb-3">
+          Add characters to make the
+          <span class="text-green-600 font-bold">Password stronger.</span>
+        </p>
+        <div class="flex space-x-12 justify-center">
+          <label class="text-xl flex items-center space-x-2" for="numbers">
+            <input class="w-6 h-6 scale-60" type="checkbox" id="numbers" />
+            <span>Numbers</span>
+          </label>
+          <label class="text-xl flex items-center space-x-2" for="Characters">
+            <input class="w-6 h-6 scale-60" type="checkbox" id="Characters" />
+            <span>Characters</span>
+          </label>
+        </div>
+      </div>
+    </div>
+    <script src="./app.js"></script>
+  </body>
+</html>
