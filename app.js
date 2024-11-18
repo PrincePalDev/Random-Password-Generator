@@ -1,11 +1,11 @@
 //access all dom values
 const passwordInput = document.getElementById("input-box");
 const copyButton = document.getElementById("copy-btn");
-const passwordLengthDisplay = document.querySelector("#password-length");
-const lengthSlider = document.getElementById("range-btn");
-const includeNumbersCheckbox = document.getElementById("numbers");
-const includeSpecialCharsCheckbox = document.getElementById("Characters");
-const strengthIndicator = document.getElementById("indicate-btn");
+const passwordLength = document.querySelector("#password-length");
+const rangeBtn = document.getElementById("range-btn");
+const numbersCheckbox = document.getElementById("numbers");
+const specialCharsCheckbox = document.getElementById("Characters");
+const indicateBtn = document.getElementById("indicate-btn");
 
 //create Function to generate a random password
 const generatePassword = (length, includeNumbers, includeSpecialChars) => {
@@ -27,45 +27,45 @@ const generatePassword = (length, includeNumbers, includeSpecialChars) => {
 };
 
 // check the password weak,good and strong
-const evaluatePasswordStrength = (password) => {
+const passwordStrength = (password) => {
   let strength = "weak";
   let strengthText = "Weak";
 
   if (password.length >= 16) {
     strength = "strong";
     strengthText = "Strong";
-    strengthIndicator.textContent = strengthText;
-    strengthIndicator.style.backgroundColor = "green"; 
-  } else if (password.length >= 12 && password.length < 16) {
+    indicateBtn.textContent = strengthText;
+    indicateBtn.style.backgroundColor = "green"; 
+  } else if (password.length >= 8 && password.length < 16) {
     strength = "good";
     strengthText = "Good";
-    strengthIndicator.textContent = strengthText;
-    strengthIndicator.style.backgroundColor = "orange";
+    indicateBtn.textContent = strengthText;
+    indicateBtn.style.backgroundColor = "orange";
   } else {
     strength = "weak";
     strengthText = "Weak";
-    strengthIndicator.textContent = strengthText;
-    strengthIndicator.style.backgroundColor = "red"; 
+    indicateBtn.textContent = strengthText;
+    indicateBtn.style.backgroundColor = "red"; 
   }
 
   return strength;
 };
 
 // Update the display of password length 
-lengthSlider.addEventListener("input", () => {
-  const length = lengthSlider.value;
-  passwordLengthDisplay.textContent = length;
+rangeBtn.addEventListener("input", () => {
+  const length = rangeBtn.value;
+  passwordLength.textContent = length;
 });
 
 // Generate a new password 
-lengthSlider.addEventListener("change", () => {
-  const length = lengthSlider.value;
-  const useNumbers = includeNumbersCheckbox.checked;
-  const useSpecialChars = includeSpecialCharsCheckbox.checked;
+rangeBtn.addEventListener("change", () => {
+  const length = rangeBtn.value;
+  const useNumbers = numbersCheckbox.checked;
+  const useSpecialChars = specialCharsCheckbox.checked;
   const newPassword = generatePassword(length, useNumbers, useSpecialChars);
   passwordInput.value = newPassword;
 
-  evaluatePasswordStrength(newPassword);
+  passwordStrength(newPassword);
 });
 
 // click the button copy the password
@@ -82,11 +82,11 @@ copyButton.addEventListener("click", () => {
 
 // Generate an initial password 
 document.addEventListener("DOMContentLoaded", () => {
-  const length = lengthSlider.value;
-  const useNumbers = includeNumbersCheckbox.checked;
-  const useSpecialChars = includeSpecialCharsCheckbox.checked;
+  const length = rangeBtn.value;
+  const useNumbers = numbersCheckbox.checked;
+  const useSpecialChars = specialCharsCheckbox.checked;
   passwordInput.value = generatePassword(length, useNumbers, useSpecialChars);
-  passwordLengthDisplay.textContent = length;
+  passwordLength.textContent = length;
 
-  evaluatePasswordStrength(passwordInput.value);
+  passwordStrength(passwordInput.value);
 });
